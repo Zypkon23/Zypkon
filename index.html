@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZYPKON - Premium Doorstep Washing</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Poppins", sans-serif; background: radial-gradient(circle at top left, #0d1b2a, #000); color: #fff; overflow-x: hidden; }
+    header { position: fixed; top: 0; width: 100%; padding: 15px 40px; background: rgba(0,0,0,0.7); display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #0ab88c33; }
+    header h1 { color: #00e1ff; font-size: 28px; font-weight: 700; letter-spacing: 2px; text-shadow: 0 0 10px #00e1ff; }
+    nav { display: flex; gap: 25px; transition: 0.4s; }
+    nav a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; position: relative; }
+    nav a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: #00bfff; transition: 0.4s; }
+    nav a:hover::after { width: 100%; }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .menu-toggle div { width: 28px; height: 3px; background: #fff; border-radius: 3px; transition: 0.4s; }
+    @media (max-width: 850px) {
+      nav { position: fixed; top: 70px; right: -100%; flex-direction: column; background: rgba(0,0,0,0.95); width: 70%; height: calc(100vh - 70px); align-items: center; justify-content: center; }
+      nav.active { right: 0; }
+      nav a { font-size: 22px; margin: 15px 0; }
+      .menu-toggle { display: flex; }
+      .menu-toggle.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+      .menu-toggle.active div:nth-child(2) { opacity: 0; }
+      .menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+    }
+    .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .hero video { position: absolute; top: 0; left: 0; min-width: 100%; min-height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.5); }
+    .hero-content { z-index: 1; padding: 0 20px; }
+    .hero-content h2 { font-size: 48px; color: #0ab88c; text-shadow: 0 0 15px #00e1ff; }
+    .hero-content p { font-size: 20px; color: #dcdcdc; margin-top: 10px; }
+    .hero-content button { margin-top: 30px; padding: 15px 40px; font-size: 18px; background: linear-gradient(90deg, #00bfff, #0078ff); border: none; color: #fff; border-radius: 50px; cursor: pointer; box-shadow: 0 0 25px #00bfff; transition: 0.3s; }
+    .hero-content button:hover { transform: scale(1.1); box-shadow: 0 0 40px #00bfff; }
+    section { padding: 100px 60px; text-align: center; }
+    .services { background: linear-gradient(to right, #000, #001f3f); }
+    .services h2 { color: #00bfff; margin-bottom: 40px; text-shadow: 0 0 10px #00bfff; font-size: 36px; }
+    .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .card { background: rgba(255,255,255,0.05); border: 1px solid #00bfff; border-radius: 20px; padding: 30px; width: 280px; transition: 0.4s; }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px #00bfff; }
+    .card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+    .stats { background: #001f3f; text-align: center; padding: 80px 20px; }
+    .stats h2 { color: #00bfff; margin-bottom: 40px; font-size: 34px; }
+    .stats-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+    .stat-box { background: rgba(255,255,255,0.05); border: 1px solid #00bfff; border-radius: 20px; padding: 30px; width: 220px; transition: 0.4s; box-shadow: 0 0 10px #00bfff33; }
+    .stat-box:hover { transform: scale(1.05); box-shadow: 0 0 20px #00bfff; }
+    .stat-box h3 { font-size: 42px; color: #0ab88c; }
+    .stat-box p { font-size: 18px; color: #ddd; }
+    @media (max-width: 600px) {
+      .stats-container { flex-direction: column; gap: 25px; }
+      .stat-box { width: 90%; margin: 0 auto; }
+    }
+    .about { background: #0a192f; }
+    .about h2 { color: #00bfff; margin-bottom: 20px; text-shadow: 0 0 10px #00bfff; }
+    .about p { max-width: 800px; margin: 0 auto; font-size: 18px; color: #ccc; line-height: 1.6; }
+    .contact h2 { color: #00bfff; margin-bottom: 40px; text-shadow: 0 0 10px #00bfff; }
+    .contact form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+    .contact input, .contact select { padding: 15px; border: none; border-radius: 10px; background: #001f3f; color: #fff; font-size: 16px; }
+    .contact button { padding: 15px; background: #00bfff; border: none; color: #fff; font-size: 18px; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+    .contact button:hover { background: #0099cc; box-shadow: 0 0 20px #00bfff; }
+    footer { background: #000; padding: 30px; text-align: center; color: #777; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ZYPKON</h1>
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div><div></div><div></div>
+    </div>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#stats">Stats</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.pixabay.com/video/2023/05/11/163338-825812830_tiny.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content">
+      <h2>Premium Doorstep Car & Bike Wash</h2>
+      <p>Experience the ultimate shine — Anytime, Anywhere!</p>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Book Now</button>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card"><img src="https://images.unsplash.com/photo-1575844611398-2a68400b437c?auto=format&fit=crop&q=60&w=500" alt="Car Wash" /><h3>Car Washing</h3><p>High-pressure cleaning for a spotless finish.</p></div>
+      <div class="card"><img src="https://images.pexels.com/photos/4513028/pexels-photo-4513028.jpeg" alt="Bike Wash" /><h3>Bike Washing</h3><p>Gentle foam wash that restores your bike's shine.</p></div>
+      <div class="card"><img src="https://plus.unsplash.com/premium_photo-1682145327489-c84344d98779?auto=format&fit=crop&q=60&w=400" alt="Solar Wash" /><h3>Solar Panel Cleaning</h3><p>Maximize efficiency with our eco-friendly wash.</p></div>
+    </div>
+  </section>
+
+  <section class="stats" id="stats">
+    <h2>Our Progress</h2>
+    <div class="stats-container">
+      <div class="stat-box"><h3 id="users">0</h3><p>Active Users</p></div>
+      <div class="stat-box"><h3 id="pending">0</h3><p>Pending Orders</p></div>
+      <div class="stat-box"><h3 id="completed">0</h3><p>Completed Orders</p></div>
+      <div class="stat-box"><h3 id="rating">0</h3><p>⭐ Average Rating</p></div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About ZYPKON</h2>
+    <p>We are Kalol's trusted doorstep washing service. With 300+ happy users, we ensure top-quality cleaning using professional tools and eco-safe products.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Book Your Wash Now</h2>
+    <form id="washForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="phone" placeholder="Mobile Number" required />
+      <select id="service" required>
+        <option value="">Select Service</option>
+        <option value="Car Wash">Car Wash</option>
+        <option value="Bike Wash">Bike Wash</option>
+        <option value="Solar Wash">Solar Wash</option>
+      </select>
+      <input type="text" id="address" placeholder="Address" required />
+      <input type="text" id="city" placeholder="City" required />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>© 2025 ZYPKON | All Rights Reserved | 📞 +91 70167 72182</footer>
+
+ <script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav");
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  function animateCounter(id, target) {
+    let count = 0;
+    const speed = 20;
+    const update = () => {
+      if (count < target) {
+        count++;
+        document.getElementById(id).innerText = count;
+        setTimeout(update, speed);
+      }
+    };
+    update();
+  }
+
+  window.addEventListener("load", () => {
+    animateCounter("users", 220);
+    animateCounter("pending", 18);
+    animateCounter("completed", 202);
+    animateCounter("rating", 4);
+  });
+
+  document.getElementById("washForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let service = document.getElementById("service").value;
+    let address = document.getElementById("address").value.trim();
+    let city = document.getElementById("city").value.trim();
+
+    // ✅ WhatsApp Message
+    let message = `New Booking - ZYPKON Doorstep Service%0A———————————————%0A Name: ${name}%0A Phone: ${phone}%0A Service: ${service}%0A Address: ${address}%0A City: ${city}%0A———————————————`;
+    window.open(`https://wa.me/917016772182?text=${message}`, "_blank");
+
+    // ✅ Google Apps Script Web App URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz6852prDJfcXS3h7Rl--iZL1LFzMA9dRxV3XRgu0wlRnvMXDt-thBPqY_Hel0hakeH/exec";
+
+    // ✅ Save to Google Sheet
+    fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors", // 🔥 Important: ye line missing thi
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        service: service,
+        address: address,
+        city: city
+      }),
+    })
+    .then(() => {
+      alert("✅ Booking Saved Successfully!");
+      document.getElementById("washForm").reset();
+    })
+    .catch((err) => {
+      alert("❌ Error saving booking: " + err);
+    });
+  });
+</script>
+
+</body>
+</html>
