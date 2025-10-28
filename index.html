@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: "Poppins", sans-serif; background: radial-gradient(circle at top left, #0d1b2a, #000); color: #fff; overflow-x: hidden; }
     header { position: fixed; top: 0; width: 100%; padding: 15px 40px; background: rgba(0,0,0,0.7); display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #0ab88c33; }
-    header h1 { color: #00e1ff; font-size: 28px; font-weight: 700; letter-spacing: 2px; text-shadow: 0 0 10px #00e1ff; }
+    header h1 { color: #37ac98; font-size: 28px; font-weight: 700; letter-spacing: 2px; text-shadow: 0 0; }
     nav { display: flex; gap: 25px; transition: 0.4s; }
     nav a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; position: relative; }
     nav a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: #00bfff; transition: 0.4s; }
@@ -45,19 +45,28 @@
   background: rgba(0,0,0,0.45);
   z-index: -1;
 }
-    .hero-content { z-index: 1; padding: 0 20px; }
-    .hero-content h1{
+    .hero-content{
+  z-index:10;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:0 20px;
+}
+    /* H1 (Big Title) */
+.hero-content h1{
   font-size:48px;
   font-weight:800;
-  color:#13997c;
+  color:#14bb97;
   text-shadow:0 0 25px rgba(255,255,255,0.45);
-  margin-bottom:100px;
+  margin-bottom:10px;
 }
-    .hero-content h2 { font-size: 40px; color: #109166; text-shadow: 0 0 15px ; }
+    .hero-content h2 { font-size: 38px; color: #a9beb7; text-shadow: 0 0 15px #; }
     .hero-content p { font-size: 20px; color: #dcdcdc; margin-top: 10px; }
     .hero-content button { margin-top: 30px; padding: 15px 40px; font-size: 18px; background: linear-gradient(90deg, #00bfff, #0078ff); border: none; color: #fff; border-radius: 50px; cursor: pointer; box-shadow: 0 0 25px #00bfff; transition: 0.3s; }
     .hero-content button:hover { transform: scale(1.1); box-shadow: 0 0 40px #00bfff; }
-    section { padding: 65px 20px; text-align: center; }
+    section { padding: 65px 25px; text-align: center; }
     .services { background: linear-gradient(to right, #000, #001f3f); }
     .services h2 { color: #00bfff; margin-bottom: 40px; text-shadow: 0 0 10px #00bfff; font-size: 36px; }
     .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
@@ -239,5 +248,3 @@
 
 </body>
 </html>
-
-
