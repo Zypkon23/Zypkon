@@ -46,11 +46,18 @@
   z-index: -1;
 }
     .hero-content { z-index: 1; padding: 0 20px; }
-    .hero-content h2 { font-size: 48px; color: #0ab88c; text-shadow: 0 0 15px #00e1ff; }
+    .hero-content h1{
+  font-size:48px;
+  font-weight:800;
+  color:#ffffff;
+  text-shadow:0 0 25px rgba(255,255,255,0.45);
+  margin-bottom:100px;
+}
+    .hero-content h2 { font-size: 40px; color: #13997c; text-shadow: 0 0 15px #00e1ff; }
     .hero-content p { font-size: 20px; color: #dcdcdc; margin-top: 10px; }
     .hero-content button { margin-top: 30px; padding: 15px 40px; font-size: 18px; background: linear-gradient(90deg, #00bfff, #0078ff); border: none; color: #fff; border-radius: 50px; cursor: pointer; box-shadow: 0 0 25px #00bfff; transition: 0.3s; }
     .hero-content button:hover { transform: scale(1.1); box-shadow: 0 0 40px #00bfff; }
-    section { padding: 100px 60px; text-align: center; }
+    section { padding: 65px 20px; text-align: center; }
     .services { background: linear-gradient(to right, #000, #001f3f); }
     .services h2 { color: #00bfff; margin-bottom: 40px; text-shadow: 0 0 10px #00bfff; font-size: 36px; }
     .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
@@ -111,6 +118,7 @@
     <source src="https://www.pexels.com/download/video/6873341" type="video/mp4" />
   </video>
     <div class="hero-content">
+      <h1>Welcome to ZYPKON</h1>
       <h2>Premium Doorstep Car & Bike Wash</h2>
       <p>Experience the ultimate shine — Anytime, Anywhere!</p>
       <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Book Now</button>
@@ -231,3 +239,4 @@
 
 </body>
 </html>
+
